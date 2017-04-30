@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.brotherd.poemtrip.dao.IPassportDao">
+    <!--
+    根据手机号以及密码查找userid,若查找到返回userid
+     -->
+    <select id="selectUserIdByLogin"
+            parameterType="Passport"
+            resultType="Long">
+        select userid from passport where phone=#{phone} and password=#{password}
+    </select>
+    <select id="selectPassportByPhone" resultType="Passport">
+        select * from passport where phone=#{phone}
+    </select>
+    <insert id="insertPassport" parameterType="Passport">
+        insert into passport(phone,password,userid) values (#{phone},#{password},#{userId})
+    </insert>
+
+</mapper>
